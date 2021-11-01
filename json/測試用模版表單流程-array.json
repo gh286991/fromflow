@@ -1,0 +1,154 @@
+[
+	{
+		"siteID" : "K123454",
+		"tempFormFlowName" : "範例模版表單流程",
+		"tempFormFlowID" : "sampleID",
+		"tempFormFlowVersion" : "1",
+		"nodes" : [ 
+			{
+				"nodeID" : "範例模版表單流程-START",
+				"nodeName" : "範例模版表單流程-START",
+				"nodeType" : "STARTNODE",
+				"trailDependence" : {
+					"dependNodeID" : ["範例執行節點-1"],
+					"dependNodeName" : ["範例執行節點-1"],
+					"dependFinishDate" : []
+				},
+				"frontDependence" : {
+					"dependNodeID" : [],
+					"dependNodeName" : [],
+					"dependFinishDate" : []
+				},
+				"formID" : "",
+				"ifFormGroup" : "false",
+				"formName" : ""
+			},		
+			{
+				"nodeID" : "範例執行節點-1",
+				"nodeName" : "範例執行節點-1",
+				"nodeType" : "NORMALNODE",
+				"trailDependence" : {
+					"dependNodeID" : ["範例執行節點-2"],
+					"dependNodeName" : ["範例執行節點-2"],
+					"dependFinishDate" : []
+				},
+				"frontDependence" : {
+					"dependNodeID" : ["範例模版表單流程-START"],
+					"dependNodeName" : ["範例模版表單流程-START"],
+					"dependFinishDate" : [ 
+						{
+							"Type" : "MONTHS",
+							"Month" : 1,
+							"Week" : 0,
+							"Day" : 1
+						}
+					]
+				},
+				"formID" : "sampleID-formGroup",
+				"ifFormGroup" : "true",
+				"formGroupVersion" : "1",
+				"formName" : "範例表單群"
+			}, 
+			{
+				"nodeID" : "範例執行節點-2",
+				"nodeName" : "範例執行節點-2",
+				"nodeType" : "NORMALNODE",
+				"trailDependence" : {
+					"dependNodeID" : ["範例執行節點-3"],
+					"dependNodeName" : ["範例執行節點-3"],
+					"dependFinishDate" : []
+				},
+				"frontDependence" : {
+					"dependNodeID" : ["範例執行節點-1"],
+					"dependNodeName" : ["範例執行節點-1"],
+					"dependFinishDate" : [ 
+						{
+							"Type" : "MONTHS",
+							"Month" : 1,
+							"Week" : 0,
+							"Day" : 1
+						}
+					]
+				},
+				"formID" : "本節點的表單（群）ID",
+				"ifFormGroup" : "false",
+				"formName" : "本節點的表單（群）名稱"
+			}, 
+			{
+				"nodeID" : "範例執行節點-3",
+				"nodeName" : "範例執行節點-3",
+				"nodeType" : "NORMALNODE",
+				"trailDependence" : {
+					"dependNodeID" : ["範例執行節點-4"],
+					"dependNodeName" : ["範例執行節點-4"],
+					"dependFinishDate" : []
+				},
+				"frontDependence" : {
+					"dependNodeID" : ["範例執行節點-2"],
+					"dependNodeName" : ["範例執行節點-2"],
+					"dependFinishDate" : [ 
+						{
+							"Type" : "MONTHS",
+							"Month" : 1,
+							"Week" : 0,
+							"Day" : 1
+						}
+					]
+				},
+				"formID" : "本節點的表單（群）ID",
+				"ifFormGroup" : "false",
+				"formName" : "本節點的表單（群）名稱"
+			}, 
+			{
+				"nodeID" : "範例執行節點-4",
+				"nodeName" : "範例執行節點-4",
+				"nodeType" : "NORMALNODE",
+				"trailDependence" : {
+					"dependNodeID" : ["範例執行節點-5"],
+					"dependNodeName" : ["範例執行節點-5"],
+					"dependFinishDate" : []
+				},
+				"frontDependence" : {
+					"dependNodeID" : ["範例執行節點-3"],
+					"dependNodeName" : ["範例執行節點-3"],
+					"dependFinishDate" : [ 
+						{
+							"Type" : "MONTHS",
+							"Month" : 1,
+							"Week" : 0,
+							"Day" : 1
+						}
+					]
+				},
+				"formID" : "該節點的表單（群）ID",
+				"ifFormGroup" : "false",
+				"formName" : "本節點的表單（群）名稱"
+			}, 
+			{
+				"nodeID" : "範例執行節點-5",
+				"nodeName" : "範例執行節點-5",
+				"nodeType" : "ENDNODE",
+				"trailDependence" : {
+					"dependNodeID" : [],
+					"dependNodeName" : [],
+					"dependFinishDate" : []
+				},
+				"frontDependence" : {
+					"dependNodeID" : ["範例執行節點-4"],
+					"dependNodeName" : ["範例執行節點-4"],
+					"dependFinishDate" : [
+						{
+							"Type" : "DAYS",
+							"Month" : 0,
+							"Week" : 0,
+							"Day" : 0
+						}					
+					]
+				},
+				"formID" : "",
+				"ifFormGroup" : "false",
+				"formName" : ""
+			}
+		]
+	}
+]
