@@ -10,9 +10,11 @@ export const severeLevel = {
   [STATUS_ERROR]: 3,
 };
 
-export default {
+const reduxStatus =  {
   STATUS_INITIAL,
   STATUS_LOADING,
   STATUS_NORMAL,
   STATUS_ERROR,
-};
+}
+
+export default reduxStatus;

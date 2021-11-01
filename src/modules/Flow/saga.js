@@ -41,4 +41,6 @@ export function* getTagFlow({ payload }) {
   }
 }
 
-export default [takeLatest(getTagFlowRequest, getTagFlow)];
+const tagsSaga = [takeLatest(getTagFlowRequest, getTagFlow)]
+
+export default tagsSaga;

@@ -1,5 +1,7 @@
 import api from '../../lib/configAxios';
 
-export default {
+const apiList = {
   getFlowList: async () => api.get('api/getFlowData'),
-};
+}
+
+export default apiList
