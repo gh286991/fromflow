@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import ActionCreators from "../../ActionCreator";
+import paginationFactory from 'react-bootstrap-table2-paginator';
 import FlowPage from "./FlowPage";
 import * as R from "ramda";
 import {

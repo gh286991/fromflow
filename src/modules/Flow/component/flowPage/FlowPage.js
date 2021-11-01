@@ -5,6 +5,7 @@ import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+import paginationFactory from "react-bootstrap-table2-paginator";
 import FlowStatus from "../../../../constants/FlowStatus";
 
 const styles = {
@@ -308,45 +309,44 @@ const FlowPage = ({ data }) => {
             </Button>
           </div>
         </div>
-        <BootstrapTable
-          bootstrap4
-          keyField="id"
-          data={data}
-          columns={selectTag === "flow" ? flowColumns : waitAcceptColumns}
-          defaultSorted={defaultSorted}
-        />
       </>
     );
   };
 
   return (
     <div style={styles.mainContainer} key="baseContainer">
-      <div>
-        <Nav tabs>
-          <NavItem>
-            <NavLink
-              className={selectTag === "flow" ? "active" : ""}
-              onClick={() => {
-                setSelectTag("flow");
-              }}
-            >
-              表單流程管理
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={selectTag === "waitAccess" ? "active" : ""}
-              onClick={() => {
-                setSelectTag("waitAccess");
-              }}
-            >
-              待核准表單
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </div>
+      <Nav tabs>
+        <NavItem>
+          <NavLink
+            className={selectTag === "flow" ? "active" : ""}
+            onClick={() => {
+              setSelectTag("flow");
+            }}
+          >
+            表單流程管理
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={selectTag === "waitAccess" ? "active" : ""}
+            onClick={() => {
+              setSelectTag("waitAccess");
+            }}
+          >
+            待核准表單
+          </NavLink>
+        </NavItem>
+      </Nav>
 
       {flowMangerContent()}
+      <BootstrapTable
+        bootstrap4
+        keyField="id"
+        data={data}
+        columns={selectTag === "flow" ? flowColumns : waitAcceptColumns}
+        defaultSorted={defaultSorted}
+        pagination={paginationFactory()}
+      />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import FlowPageContainer from "./modules/Flow/component/flowPage" ;
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <FlowPageContainer  /> 
     </div>
   );
