@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import configStore from "./lib/configStore";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const store = configStore();
 
