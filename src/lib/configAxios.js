@@ -3,7 +3,7 @@ import axios from 'axios';
 let privateToken = null;
 
 const instance = axios.create({
-  baseURL: 'https://337bf18b-3eae-41fd-8c34-4edae8fde525.mock.pstmn.io',
+  baseURL: 'https://65725d07-1cdc-42f0-b1ea-c1878e946cef.mock.pstmn.io',
   timeout: 600000,
 });
 
