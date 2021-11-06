@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FlowChartWithState, FlowChart } from "@mrblenny/react-flow-chart";
 import * as actions from "@mrblenny/react-flow-chart/src/container/actions";
 import styled from "styled-components";
+import * as data from '../../../../targetFormChart.json'
+import autoLayout from '../../../../utils/autoLayout'
 
 const styles = {
   mainContainer: {
@@ -103,7 +105,6 @@ const NodeInnerCustom = ({ node, config }) => {
   return (
     <Outer>
       <div>
-        {" "}
         {node.text} <br /> {node.status}
       </div>
     </Outer>
@@ -111,7 +112,9 @@ const NodeInnerCustom = ({ node, config }) => {
 };
 
 const FlowPage = ({ chartData, formFlowName, formStatus }) => {
-  console.log("data", chartData);
+
+  console.log('chartData' , chartData)
+  autoLayout(chartData)
   return (
     <div style={styles.mainContainer} key="baseContainer">
       <div style={styles.title}>{formFlowName}</div>
@@ -123,7 +126,7 @@ const FlowPage = ({ chartData, formFlowName, formStatus }) => {
           CanvasOuter: CanvasOuterCustom,
         }}
         config={{
-          readonly: true,
+
           zoom: { wheel: { disabled: true } },
         }}
       />

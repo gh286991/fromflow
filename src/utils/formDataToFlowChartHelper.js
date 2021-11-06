@@ -1,45 +1,45 @@
-
 import * as R from "ramda";
 
- const flowChartDataInterFace = (flowData) => {
-    const yStart = 200;
-    const xSpace = 300;
+const flowChartDataInterFace = (flowData) => {
+  const yStart = 200;
+  const xSpace = 300;
 
-    const nodes = R.pathOr([], ["nodes"], flowData);
-    if (nodes.length === 0) return null;
+  const nodes = R.pathOr([], ["nodes"], flowData);
+  if (nodes.length === 0) return null;
+  const nodesData = nodes.map((node, index) => {
 
-    const nodesData = nodes.map((node, index) => {
-      return {
-        [node.nodeID]: {
-          id: node.nodeID,
-          text: node.nodeName,
-          status: node.nodeStatus,
-          position: {
-            x: index * xSpace,
-            y: yStart,
+    return {
+      [node.nodeID]: {
+        id: node.nodeID,
+        text: node.nodeName,
+        status: node.nodeStatus,
+        // position: {
+        //   x: index * xSpace,
+        //   y: yStart,
+        // },
+        ports: {
+          port1: {
+            id: "port1",
+            type: "left",
           },
-          ports: {
-            port1: {
-              id: "port1",
-              type: "left",
-            },
-            port2: {
-              id: "port2",
-              type: "right",
-            },
+          port2: {
+            id: "port2",
+            type: "right",
           },
         },
-      };
-    });
+      },
+    };
+  });
 
-    const links = nodes.map((node, index) => {
-  
+  const linkData = [];
+  nodes.forEach((node, index) => {
+    const trailNode = R.pathOr(null, ["trailDependence", "dependNodeID"], node);
+    if (trailNode.length === 0) return {};
 
-      const trailNode = R.pathOr(null, ["trailDependence", "dependNodeID" , 0], node);
-      if(!trailNode) return {}; 
-      const linkKey = `${node.nodeID}to${trailNode} `;
+    trailNode.forEach((trail) => {
+      const linkKey = `${node.nodeID}to${trail} `;
 
-      return {
+      linkData.push({
         [linkKey]: {
           id: linkKey,
           from: {
@@ -47,24 +47,30 @@ import * as R from "ramda";
             portId: "port2",
           },
           to: {
-            nodeId: trailNode,
+            nodeId: trail,
             portId: "port1",
           },
         },
-      };
+      });
     });
+  });
 
-    return {
-      offset: {
-        x: 0,
-        y: 0,
-      },
-      scale: 0.7,
-      nodes: Object.assign({}, ...nodesData),
-      links: Object.assign({}, ...links),
-      selected: {},
-      hovered: {},
-    };
+  const noLocationData =  {
+    offset: {
+      x: 0,
+      y: 0,
+    },
+    scale: 0.7,
+    nodes: Object.assign({}, ...nodesData),
+    links: Object.assign({}, ...linkData),
+    selected: {},
+    hovered: {},
   };
 
-  export default flowChartDataInterFace
+return noLocationData
+
+};
+
+
+
+export default flowChartDataInterFace;
