@@ -1,22 +1,20 @@
 import * as R from "ramda";
 
 const flowChartDataInterFace = (flowData) => {
-  const yStart = 200;
-  const xSpace = 300;
-
   const nodes = R.pathOr([], ["nodes"], flowData);
   if (nodes.length === 0) return null;
-  const nodesData = nodes.map((node, index) => {
+  const nodesData = nodes.map((node) => {
 
     return {
       [node.nodeID]: {
         id: node.nodeID,
         text: node.nodeName,
+        date: {
+          startDate:node.startDate,
+          dueDate:node.nodeFinishDate.dueDate,
+          actualFinishTime: node.finishForm.actualFinishTime
+        },
         status: node.nodeStatus,
-        // position: {
-        //   x: index * xSpace,
-        //   y: yStart,
-        // },
         ports: {
           port1: {
             id: "port1",

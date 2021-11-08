@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PropTypes, { node } from "prop-types";
+import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import ActionCreators from "../../ActionCreator";
@@ -10,37 +10,33 @@ import {
   reduxErrorSelector,
   tagListSelector,
 } from "../../selector";
-import flowChartDataInterFace from '../../../../utils/formDataToFlowChartHelper'
-
-
+import flowChartDataInterFace from "../../../../utils/formDataToFlowChartHelper";
 
 const FlowPageContainer = ({ reduxStatus, reduxError, actions, data }) => {
   const { getTagFlowRequest } = actions;
   const flowData = R.pathOr([], ["tags", "data", "data"], data);
-  const formFlowName = R.pathOr("", [ 'objectFormFlowName'], flowData);
-  const formStatus = R.pathOr("" , ["statusProcessing"] , flowData)
+  const formFlowName = R.pathOr("", ["objectFormFlowName"], flowData);
+  const formStatus = R.pathOr("", ["statusProcessing"], flowData);
 
   useEffect(() => {
     getTagFlowRequest();
-  }, []);
-
- 
+  }, [getTagFlowRequest]);
 
   return (
     <>
-    <div>
-      {flowChartDataInterFace(flowData) ? (
-        <FlowPage
-          reduxStatus={reduxStatus}
-          reduxError={reduxError}
-          chartData={flowChartDataInterFace(flowData)}
-          height= {'50vh'}
-          formFlowName={formFlowName}
-          formStatus={formStatus}
-        />
-      ) : (
-        <div>Loading</div>
-      )}
+      <div>
+        {flowChartDataInterFace(flowData) ? (
+          <FlowPage
+            reduxStatus={reduxStatus}
+            reduxError={reduxError}
+            chartData={flowChartDataInterFace(flowData)}
+            height={"50vh"}
+            formFlowName={formFlowName}
+            formStatus={formStatus}
+          />
+        ) : (
+          <div>Loading</div>
+        )}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ const autoLayout = (chart) => {
   const g = new dagre.graphlib.Graph({});
   g.setGraph({
     marginx: 0,
-    marginy: 100,
+    marginy: 30,
     rankdir: "LR",
   });
   g.setDefaultEdgeLabel(function () {
@@ -13,7 +13,7 @@ const autoLayout = (chart) => {
 
   for (let nodeId in chart.nodes) {
     // you need to know dimension of every node
-    g.setNode(nodeId, { width: 300, height: 100 });
+    g.setNode(nodeId, { width: 350, height: 120 });
   }
 
   for (let k in chart.links) {
@@ -24,8 +24,8 @@ const autoLayout = (chart) => {
 
   for (let nodeId in chart.nodes) {
     chart.nodes[nodeId].position = {
-      x: g.node(nodeId).x  - 200 / 2,
-      y: g.node(nodeId).y - 100 / 2,
+      x: g.node(nodeId).x  - 350 / 2,
+      y: g.node(nodeId).y - 120 / 2,
     };
   }
 };
